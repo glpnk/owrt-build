@@ -1,0 +1,15 @@
+name: Test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get OpenWRT SDK
+        id: get-sdk
+        run: |
+          set -x
+          curl "https://downloads.openwrt.org/snapshots/targets/x86/64/openwrt-sdk-x86-64_gcc-13.3.0_musl.Linux-x86_64.tar.zst" -o sdk.tar.zst
+          tar --zstd -xvf sdk.tar.zst
+          tree
